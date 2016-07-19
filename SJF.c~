@@ -1,0 +1,38 @@
+#include <stdio.h>
+typedef struct proc{
+    int id;
+    int bt;
+}process;
+
+int main()
+{
+    int no;process temp;
+    printf("Enter the no of processes:");
+    scanf("%d",&no);
+    process *list = malloc(sizeof(process) * no);
+
+    for(int i=0;i<no;i++)
+    {
+	printf("Enter arrival time of process %d: ",i);
+	scanf("%d",&list[i]->id);
+	printf("Enter burst time: ");
+	scanf("%d",&list[i]->bt);
+    }
+
+    for(int i=0;i<no;i++)
+    {
+	for(int j=0;j<no-i+1;j++)
+	{
+	    if(list[j]->id > list[j+1]->id)
+	    {
+		temp.id = list[j+1]->id;
+		temp.bt = list[j+1]->bt;
+		list[j+1]->id = list[j]->id;
+		list[j+1]->bt = list[j]->bt;
+		list[j]->id = temp.id;
+		list[j]->bt = temp.bt;
+	    }
+	}
+    }
+    return 0;
+}
